@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/_template.xhtml">
+	<ui:define name="content">
+		<div class="card product">
+			<h:form id="form">
+				<p:dataView var="setup" value="#{setupBean.list()}" rows="12"
+					paginator="true" rowsPerPageTemplate="6,12,16"
+					paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+					gridIcon="pi pi-th-large" listIcon="pi pi-bars">
+
+					<p:dataViewGridItem>
+						<div class="product-grid-item card border-1"
+							style="background: var(- -surface-e); padding: 2rem; box-shadow: 0 2px 1px -1px rgb(0 0 0/ 20%), 0 1px 1px 0 rgb(0 0 0/ 14%), 0 1px 3px 0 rgb(0 0 0/ 12%); border-radius: 4px; margin-bottom: 2rem;">
+							<div class="product-grid-item-content"
+								style="text-align: center;">
+								<img src="#{request.contextPath}#{setup.imagePath}"
+									class="thumb"
+									style="box-shadow: 0 3px 6px rgb(0 0 0/ 16%), 0 3px 6px rgb(0 0 0/ 23%); margin: 2rem 0" />
+								<div class="product-name"
+									style="font-size: 1rem; font-weight: 700;">#{setup.name}</div>
+								<div class="product-description" style="margin: 0 0 1rem 0;">#{setup.description}</div>
+								<p:rating readonly="true" value="" style="margin: 0 0 1rem 0;" />
+							</div>
+							<div class="product-grid-item-bottom"
+								style="display: flex; align-items: center; justify-content: space-between;">
+								<h:outputText value="#{setup.price}"
+									style="font-size: 1.5rem;
+   											 font-weight: 600;">
+									<f:convertNumber currencySymbol="R$" type="currency" />
+								</h:outputText>
+								<p:commandButton type="button" value="Details"
+									icon="pi pi-search">
+								</p:commandButton>
+							</div>
+						</div>
+					</p:dataViewGridItem>
+
+					<p:dataViewListItem>
+						<div class="product-list-item"
+							style="display: flex; align-items: center; padding: 1rem;">
+							<img src="#{request.contextPath}#{setup.imagePath}" class="thumb"
+								style="box-shadow: 0 3px 6px rgb(0 0 0/ 16%), 0 3px 6px rgb(0 0 0/ 23%); margin-right: 2rem;" />
+							<div class="product-list-detail" style="flex: 1 1 0">
+
+								<div class="product-name"
+									style="font-size: 1rem; font-weight: 700;">#{setup.name}</div>
+								<div class="product-description" style="margin: 0 0 1rem 0;">#{setup.description}</div>
+								<i class="pi pi-times-circle" style="display: flex; color: red;" ><p:rating readonly="true" value="" style="margin-left: 10px;" /> </i>
+								
+							</div>
+							<div class="product-list-action"
+								style="display: flex; flex-direction: column;">
+								<h:outputText value="#{setup.price}"
+									style="font-size: 1.5rem;
+    										font-weight: 600;
+   											 margin-bottom: 0.5rem;
+    										align-self: flex-end">
+									<f:convertNumber currencySymbol="R$" type="currency" />
+								</h:outputText>
+								<p:commandButton type="button" value="Details"
+									icon="pi pi-search">
+								</p:commandButton>
+							</div>
+						</div>
+					</p:dataViewListItem>
+				</p:dataView>
+			</h:form>
+		</div>
+	</ui:define>
+</ui:composition>
+
+
+</html>

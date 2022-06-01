@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/_template.xhtml">
+	<ui:define name="content">
+	
+		<h:form enctype="multipart/form-data">
+			<p:card style="width: 25em; margin: 1em auto">
+				<f:facet name="title">Cadastro</f:facet>
+
+				<div class="ui-fluid">
+					<div class="p-field">
+						<label for="name">Nome</label>
+						<p:inputText 
+							id="name" 
+							type="text" 
+							value="#{userBean.user.name}" 
+							required="true"
+							requiredMessage="O campo nome é obrigatório"
+					
+						>
+							
+						</p:inputText>
+					</div>
+					</div>
+					<div class="p-field">
+						<label for="rg">RG</label>
+						<p:datePicker 
+							value="#{userBean.user.rg}" 
+							id="rg"
+							yearNavigator="true"
+							required="true"
+							requiredMessage="O campo RG é obrigatório"
+						/>
+					</div>
+					<div class="p-field">
+						<label for="email">E-mail</label>
+						<p:inputText 
+							id="email" 
+							type="email"
+							value="#{userBean.user.email}"
+							required="true"
+							requiredMessage="O campo email é obrigatório"
+							
+						>
+							
+						</p:inputText>
+					</div>
+					<div class="p-field">
+						<label for="cpf">CPF</label>
+						<p:datePicker 
+							value="#{userBean.user.cpf}" 
+							id="cpf"
+							yearNavigator="true"
+							required="true"
+							requiredMessage="O campo CPF é obrigatório"
+						/>
+					</div>
+					<div class="p-field">
+						<label for="birthday">Data/Nascimento</label>
+						<p:datePicker 
+							value="#{userBean.user.birthday}" 
+							id="birthday"
+							yearNavigator="true"
+							required="true"
+							requiredMessage="O campo Data/Nascimento é obrigatório"
+						/>
+
+					</div>
+					<div class="p-field">
+						<label for="password">Senha</label>
+						<p:password
+							id="password" 
+							value="#{userBean.user.password}" 
+							feedback="true"
+							validatorMessage="A senha deve ter pelo menos 8 caracteres">
+						>
+						<f:validateLength minimum="8" />
+							
+						</p:password>
+					</div>
+					
+					<div class="p-field">
+						<label for="user">Imagem: </label>
+						<p:fileUpload value="#{userBean.image}" mode="simple" skinSimple="true" id="image"/>
+					</div>
+					
+				</div>
+				<f:facet name="footer">
+					<p:commandButton icon="pi pi-check" value="Save"
+						action="#{userBean.save}" />
+					<p:commandButton icon="pi pi-times" value="Cancel"
+						 styleClass="ui-button-secondary"
+						style="margin-left: .5em" />
+				</f:facet>
+			</p:card>
+		</h:form>
+	</ui:define>
+</ui:composition>
+
+
+</html>

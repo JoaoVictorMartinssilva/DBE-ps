@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>JK Control</title>
+	<link href="css/global.css" rel="stylesheet" type="text/css" />
+</h:head>
+
+<body>
+	<h:form>
+		<p:menubar>
+			<p:submenu label="#{user.email}">
+				<p:menuitem action="#{userBean.logout}" value="Logout"
+					icon="pi pi-fw pi-sign-out" />
+			</p:submenu>
+		</p:menubar>
+	</h:form>
+	<!--  MENU -->
+	<div class="card">
+		<h:form>
+			<p:tabMenu activeIndex="#{param.i}">
+				<p:menuitem value="Home" outcome="setups.xhtml"
+					icon="pi pi-fw pi-home">
+					<f:param name="i" value="0" />
+				</p:menuitem>
+				<p:menuitem value="Info" outcome="setup_new.xhtml"
+					icon="pi pi-fw pi-desktop">
+					<f:param name="i" value="1" />
+				</p:menuitem>
+				<p:menuitem value="Perfil" outcome="profile.xhtml"
+					icon="pi pi-fw pi-user">
+					<f:param name="i" value="2" />
+				</p:menuitem>
+				<p:menuitem value="Cadastro" outcome="user_new.xhtml"
+					icon="pi pi-fw pi-user-plus">
+					<f:param name="i" value="3" />
+				</p:menuitem>
+				<p:menuitem value="Visitantes" outcome="users.xhtml"
+					icon="pi pi-fw pi-users">
+					<f:param name="i" value="4" />
+				</p:menuitem>
+			</p:tabMenu>
+		</h:form>
+	</div>
+
+	<p:messages id="msg">
+		<p:autoUpdate />
+	</p:messages>
+
+	<ui:insert name="content" />
+
+	<ui:insert name="footer" />
+
+</body>
+</html>
